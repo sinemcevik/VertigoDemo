@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f717d821d05784446a6398d9242833cb, type: 3}
+  m_Name: New Battle Pass Config
+  m_EditorClassIdentifier: Assembly-CSharp::BattlePassConfig
+  seasonName: Season 16
+  heroName: Cleopatra
+  rarityName: Mythic
+  timeLeft: 17d 20h
+  playerLevel: 3
+  currentXP: 80
+  requiredXP: 200
+  premiumOwned: 0
+  coins: 4403
+  diamonds: 18
+  luckyGems: 0
+  freeRewards:
+  - rewardId: 11
+    displayName: COMMON CHEST
+    rewardType: 3
+    track: 0
+    rarity: 0
+    icon: {fileID: 21300000, guid: a712295a66bb34634be19d93ea1d8210, type: 3}
+    currencyIcon: {fileID: 0}
+    amount: 0
+    requiredLevel: 1
+    claimed: 1
+  - rewardId: 12
+    displayName: GOLD
+    rewardType: 0
+    track: 0
+    rarity: 0
+    icon: {fileID: 21300000, guid: f980253da79364de39f2cfb3765bd59d, type: 3}
+    currencyIcon: {fileID: 0}
+    amount: 1000
+    requiredLevel: 2
+    claimed: 0
+  premiumRewards:
+  - rewardId: 1
+    displayName: CLEOPATRA
+    rewardType: 4
+    track: 1
+    rarity: 0
+    icon: {fileID: 21300000, guid: e5f1b4accc8384d3e8cbf25d098e6db2, type: 3}
+    currencyIcon: {fileID: 0}
+    amount: 1
+    requiredLevel: 0
+    claimed: 0
+  - rewardId: 2
+    displayName: SOLARIS
+    rewardType: 6
+    track: 1
+    rarity: 0
+    icon: {fileID: 21300000, guid: 8fdc31c7b4a1c4145bbc6f26b3ff5c3a, type: 3}
+    currencyIcon: {fileID: 0}
+    amount: 1
+    requiredLevel: 0
+    claimed: 0
+  - rewardId: 3
+    displayName: CLEOPATRA
+    rewardType: 4
+    track: 1
+    rarity: 0
+    icon: {fileID: 21300000, guid: e5f1b4accc8384d3e8cbf25d098e6db2, type: 3}
+    currencyIcon: {fileID: 0}
+    amount: 2
+    requiredLevel: 0
+    claimed: 0
+  - rewardId: 4
+    displayName: SOLARIS
+    rewardType: 6
+    track: 1
+    rarity: 0
+    icon: {fileID: 21300000, guid: 8fdc31c7b4a1c4145bbc6f26b3ff5c3a, type: 3}
+    currencyIcon: {fileID: 0}
+    amount: 2
+    requiredLevel: 0
+    claimed: 0
+  - rewardId: 5
+    displayName: GOLD
+    rewardType: 0
+    track: 1
+    rarity: 0
+    icon: {fileID: 21300000, guid: f980253da79364de39f2cfb3765bd59d, type: 3}
+    currencyIcon: {fileID: 0}
+    amount: 5000
+    requiredLevel: 1
+    claimed: 0
