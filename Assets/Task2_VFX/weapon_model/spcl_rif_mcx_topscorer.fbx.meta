@@ -3,7 +3,12 @@ guid: e30b77f4ca77544a68cac38ce2f73422
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: spcl_rif_mcx_topscorer
+    second: {fileID: 2100000, guid: a966dfb8a5e474f8e9feff97548b16e9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

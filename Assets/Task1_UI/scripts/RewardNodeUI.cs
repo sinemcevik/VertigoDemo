@@ -18,19 +18,43 @@ public class RewardNodeUI : MonoBehaviour
     [SerializeField] private GameObject lockIcon;
     [SerializeField] private GameObject alertIcon;
     [SerializeField] private GameObject claimedCheck;
-    [SerializeField] private GameObject glow;
+
+    [Header("Shine Effect")]
+    [SerializeField] private RectTransform shine;
+    [SerializeField] private float shineStartX = -300f;
+    [SerializeField] private float shineEndX = 300f;
+    [SerializeField] private float shineDuration = 1f;
+    [SerializeField] private float shineWaitTime = 2f;
+
+    [Header("Milestone")]
+    [SerializeField] private TMP_Text milestoneLevelText;
+
+    [Header("Premium Tick")]
+    [SerializeField] private GameObject premiumTick;
 
     [Header("FX")]
     [SerializeField] private ParticleSystem claimableParticles;
     [SerializeField] private ParticleSystem claimBurstParticles;
     [SerializeField] private Animator animator;
 
+    [Header("Backgrounds")]
+    [Tooltip("Default background sprite used for reached (claimable/claimed) cards.")]
+    [SerializeField] private Sprite defaultBackgroundSprite;
+    [Tooltip("Background sprite used for free-track cards that have been claimed.")]
+    [SerializeField] private Sprite claimedFreeBackgroundSprite;
+
     [Header("Button")]
     [SerializeField] private Button button;
 
     private BattlePassRewardData data;
     private RewardState currentState;
+    private bool premiumOwned;
+    private int cachedPlayerLevel;
     private System.Action<BattlePassRewardData> onClaim;
+
+    private float shineTimer;
+    private bool shineMoving;
+    private bool shineActive;
 
     public void Setup(
         BattlePassRewardData rewardData,
@@ -40,9 +64,14 @@ public class RewardNodeUI : MonoBehaviour
     {
         data = rewardData;
         onClaim = claimCallback;
+        this.premiumOwned = premiumOwned;
+        cachedPlayerLevel = playerLevel;
 
         rewardNameText.text = data.displayName?.ToUpper() ?? "";
         rewardIcon.sprite = data.icon;
+
+        if (milestoneLevelText != null)
+            milestoneLevelText.text = data.requiredLevel.ToString();
 
         bool hasAmount = data.amount > 0;
         if (amountRoot != null)
@@ -88,18 +117,38 @@ public class RewardNodeUI : MonoBehaviour
         if (lockIcon != null) lockIcon.SetActive(locked);
         if (alertIcon != null) alertIcon.SetActive(claimable || premiumLocked);
         if (claimedCheck != null) claimedCheck.SetActive(claimed);
-        if (glow != null) glow.SetActive(claimable);
+
+        shineActive = claimable;
+        if (shine != null)
+        {
+            shine.gameObject.SetActive(claimable);
+            if (claimable)
+            {
+                shineTimer = 0f;
+                shineMoving = false;
+                shine.anchoredPosition = new Vector2(shineStartX, 0f);
+            }
+        }
+        if (premiumTick != null) premiumTick.SetActive(data.track == RewardTrack.Premium && premiumOwned);
 
         button.interactable = claimable;
 
-        float alpha = 1f;
+        if (cardBackground != null)
+        {
+            Sprite bgSprite;
+            if (claimed && data.track == RewardTrack.Free && claimedFreeBackgroundSprite != null)
+                bgSprite = claimedFreeBackgroundSprite;
+            else if (cachedPlayerLevel >= data.requiredLevel)
+                bgSprite = defaultBackgroundSprite;
+            else
+                bgSprite = data.lockedBackground;
 
-        if (locked)
-            alpha = 0.45f;
-        else if (claimed)
-            alpha = 0.55f;
+            if (bgSprite != null)
+                cardBackground.sprite = bgSprite;
+            cardBackground.color = Color.white;
+        }
 
-        rewardIcon.color = new Color(1f, 1f, 1f, alpha);
+        rewardIcon.color = Color.white;
 
         if (claimableParticles != null)
         {
@@ -111,6 +160,33 @@ public class RewardNodeUI : MonoBehaviour
         {
             animator.SetBool("Claimable", claimable);
             animator.SetBool("Claimed", claimed);
+        }
+    }
+
+    private void Update()
+    {
+        if (!shineActive || shine == null) return;
+
+        if (!shineMoving)
+        {
+            shineTimer += Time.deltaTime;
+            if (shineTimer >= shineWaitTime)
+            {
+                shineTimer = 0f;
+                shineMoving = true;
+            }
+            return;
+        }
+
+        float t = shineTimer / shineDuration;
+        shine.anchoredPosition = new Vector2(Mathf.Lerp(shineStartX, shineEndX, t), 0f);
+        shineTimer += Time.deltaTime;
+
+        if (shineTimer >= shineDuration)
+        {
+            shineTimer = 0f;
+            shineMoving = false;
+            shine.anchoredPosition = new Vector2(shineStartX, 0f);
         }
     }
 

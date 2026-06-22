@@ -1,3 +1,9 @@
+# macOS
+.DS_Store
+
+# Scene recordings over GitHub's 100MB file limit
+Assets/Scenes/Recordings/VertigoUI.mov
+
 # Unity generated folders
 [Ll]ibrary/
 [Tt]emp/

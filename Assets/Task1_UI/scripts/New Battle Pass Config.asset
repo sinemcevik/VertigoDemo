@@ -16,11 +16,11 @@ MonoBehaviour:
   heroName: Cleopatra
   rarityName: Mythic
   timeLeft: 17d 20h
-  playerLevel: 3
+  playerLevel: 2
   currentXP: 80
   requiredXP: 200
   premiumOwned: 0
-  coins: 4403
+  coins: 6403
   diamonds: 18
   luckyGems: 0
   freeRewards:
@@ -33,7 +33,9 @@ MonoBehaviour:
     currencyIcon: {fileID: 0}
     amount: 0
     requiredLevel: 1
-    claimed: 1
+    claimed: 0
+    showFreeCard: 0
+    lockedBackground: {fileID: 21300000, guid: 6b1955e4494914d7aba847d5cf0fb543, type: 3}
   - rewardId: 12
     displayName: GOLD
     rewardType: 0
@@ -44,6 +46,32 @@ MonoBehaviour:
     amount: 1000
     requiredLevel: 2
     claimed: 0
+    showFreeCard: 0
+    lockedBackground: {fileID: 21300000, guid: 03b92ed32bb6d4a47a57ba331d3d33ff, type: 3}
+  - rewardId: 13
+    displayName: LUCKY GEM
+    rewardType: 2
+    track: 0
+    rarity: 0
+    icon: {fileID: 21300000, guid: 4dad92d7e73e846eeaaa69d9a9056d67, type: 3}
+    currencyIcon: {fileID: 0}
+    amount: 2
+    requiredLevel: 3
+    claimed: 0
+    showFreeCard: 0
+    lockedBackground: {fileID: 21300000, guid: 045bdafb1e3ea40e4bac292437d9cf46, type: 3}
+  - rewardId: 13
+    displayName: DIAMOND
+    rewardType: 1
+    track: 0
+    rarity: 0
+    icon: {fileID: 21300000, guid: e0b2f907480ee40bf9820264d7d230a9, type: 3}
+    currencyIcon: {fileID: 0}
+    amount: 5
+    requiredLevel: 4
+    claimed: 0
+    showFreeCard: 0
+    lockedBackground: {fileID: 21300000, guid: b7f5bd6cee42846f199878f11943c707, type: 3}
   premiumRewards:
   - rewardId: 1
     displayName: CLEOPATRA
@@ -53,8 +81,10 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: e5f1b4accc8384d3e8cbf25d098e6db2, type: 3}
     currencyIcon: {fileID: 0}
     amount: 1
-    requiredLevel: 0
+    requiredLevel: 1
     claimed: 0
+    showFreeCard: 0
+    lockedBackground: {fileID: 21300000, guid: 9b10601dec27144fc9cd02067dec2873, type: 3}
   - rewardId: 2
     displayName: SOLARIS
     rewardType: 6
@@ -63,8 +93,10 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 8fdc31c7b4a1c4145bbc6f26b3ff5c3a, type: 3}
     currencyIcon: {fileID: 0}
     amount: 1
-    requiredLevel: 0
+    requiredLevel: 1
     claimed: 0
+    showFreeCard: 0
+    lockedBackground: {fileID: 21300000, guid: 9118225116c25437783ad4b9b2a9221f, type: 3}
   - rewardId: 3
     displayName: CLEOPATRA
     rewardType: 4
@@ -73,8 +105,10 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: e5f1b4accc8384d3e8cbf25d098e6db2, type: 3}
     currencyIcon: {fileID: 0}
     amount: 2
-    requiredLevel: 0
+    requiredLevel: 1
     claimed: 0
+    showFreeCard: 0
+    lockedBackground: {fileID: 21300000, guid: 41b7de8b03e57497a88832764a612242, type: 3}
   - rewardId: 4
     displayName: SOLARIS
     rewardType: 6
@@ -83,8 +117,10 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 8fdc31c7b4a1c4145bbc6f26b3ff5c3a, type: 3}
     currencyIcon: {fileID: 0}
     amount: 2
-    requiredLevel: 0
+    requiredLevel: 1
     claimed: 0
+    showFreeCard: 1
+    lockedBackground: {fileID: 21300000, guid: 6b1955e4494914d7aba847d5cf0fb543, type: 3}
   - rewardId: 5
     displayName: GOLD
     rewardType: 0
@@ -93,5 +129,31 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: f980253da79364de39f2cfb3765bd59d, type: 3}
     currencyIcon: {fileID: 0}
     amount: 5000
-    requiredLevel: 1
+    requiredLevel: 2
     claimed: 0
+    showFreeCard: 1
+    lockedBackground: {fileID: 21300000, guid: 03b92ed32bb6d4a47a57ba331d3d33ff, type: 3}
+  - rewardId: 6
+    displayName: LUCKY GEM
+    rewardType: 2
+    track: 1
+    rarity: 1
+    icon: {fileID: 21300000, guid: 4dad92d7e73e846eeaaa69d9a9056d67, type: 3}
+    currencyIcon: {fileID: 0}
+    amount: 10
+    requiredLevel: 3
+    claimed: 0
+    showFreeCard: 1
+    lockedBackground: {fileID: 21300000, guid: 045bdafb1e3ea40e4bac292437d9cf46, type: 3}
+  - rewardId: 7
+    displayName: CHEST
+    rewardType: 3
+    track: 1
+    rarity: 3
+    icon: {fileID: 21300000, guid: 463f2eb6427a448b697482de18228a0b, type: 3}
+    currencyIcon: {fileID: 0}
+    amount: 1
+    requiredLevel: 4
+    claimed: 0
+    showFreeCard: 1
+    lockedBackground: {fileID: 21300000, guid: b7f5bd6cee42846f199878f11943c707, type: 3}

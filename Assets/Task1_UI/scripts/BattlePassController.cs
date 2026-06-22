@@ -11,11 +11,13 @@ public class BattlePassController : MonoBehaviour
     [Header("Prefabs")]
     [SerializeField] private RewardNodeUI freeRewardPrefab;
     [SerializeField] private RewardNodeUI premiumRewardPrefab;
+    [SerializeField] private GameObject milestonePrefab;
 
     [Header("Parents")]
     [SerializeField] private RectTransform content;
     [SerializeField] private RectTransform freeRewardsParent;
     [SerializeField] private RectTransform premiumRewardsParent;
+    [SerializeField] private RectTransform milestoneParent;
 
     [Header("Road")]
     [SerializeField] private BattlePassRoadUI roadUI;
@@ -35,6 +37,10 @@ public class BattlePassController : MonoBehaviour
 
     private void Start()
     {
+        Button getButton = GameObject.Find("GetButton")?.GetComponent<Button>();
+        if (getButton != null)
+            getButton.onClick.AddListener(OnGetPremiumClicked);
+
         Build();
     }
 
@@ -48,6 +54,7 @@ public class BattlePassController : MonoBehaviour
 
         ClearParent(freeRewardsParent);
         ClearParent(premiumRewardsParent);
+        ClearParent(milestoneParent);
 
         RefreshTopUI();
 
@@ -81,24 +88,45 @@ public class BattlePassController : MonoBehaviour
     private void BuildRewards(Dictionary<int, float> levelCenterX)
     {
         Dictionary<int, List<BattlePassRewardData>> premiumByLevel = GroupByLevel(config.premiumRewards);
+
+        // Queue free rewards by level so ticked premium cards can consume them in order.
+        Dictionary<int, Queue<BattlePassRewardData>> freeQueueByLevel = new Dictionary<int, Queue<BattlePassRewardData>>();
+        foreach (BattlePassRewardData r in config.freeRewards)
+        {
+            if (!freeQueueByLevel.ContainsKey(r.requiredLevel))
+                freeQueueByLevel[r.requiredLevel] = new Queue<BattlePassRewardData>();
+            freeQueueByLevel[r.requiredLevel].Enqueue(r);
+        }
+
         foreach (KeyValuePair<int, List<BattlePassRewardData>> kvp in premiumByLevel)
         {
-            // levelCenterX stores the first-reward X; derive the visual group center from it.
+            List<BattlePassRewardData> group = kvp.Value;
             float firstX = levelCenterX.TryGetValue(kvp.Key, out float px)
                 ? px
                 : startX + Mathf.Max(0, kvp.Key - 1) * spacingX;
-            float groupCenterX = firstX + (kvp.Value.Count - 1) * 0.5f * spacingX;
-            SpawnRewardGroup(kvp.Value, RewardTrack.Premium, premiumRewardsParent, premiumRewardPrefab, groupCenterX);
-        }
 
-        // Free rewards align with their level's checkpoint (= first premium reward X).
-        Dictionary<int, List<BattlePassRewardData>> freeByLevel = GroupByLevel(config.freeRewards);
-        foreach (KeyValuePair<int, List<BattlePassRewardData>> kvp in freeByLevel)
-        {
-            float cx = levelCenterX.TryGetValue(kvp.Key, out float px)
-                ? px
-                : startX + (kvp.Key - 1) * spacingX;
-            SpawnRewardGroup(kvp.Value, RewardTrack.Free, freeRewardsParent, freeRewardPrefab, cx);
+            for (int i = 0; i < group.Count; i++)
+            {
+                BattlePassRewardData reward = group[i];
+                reward.track = RewardTrack.Premium;
+                float cardX = firstX + i * spacingX;
+
+                RewardNodeUI premNode = Instantiate(premiumRewardPrefab, premiumRewardsParent);
+                premNode.GetComponent<RectTransform>().anchoredPosition = new Vector2(cardX, 0f);
+                premNode.Setup(reward, config.playerLevel, config.premiumOwned, OnRewardClaimed);
+
+                // If ticked, place the next free reward for this level at the same X position.
+                if (reward.showFreeCard
+                    && freeQueueByLevel.TryGetValue(kvp.Key, out Queue<BattlePassRewardData> freeQueue)
+                    && freeQueue.Count > 0)
+                {
+                    BattlePassRewardData freeReward = freeQueue.Dequeue();
+                    freeReward.track = RewardTrack.Free;
+                    RewardNodeUI freeNode = Instantiate(freeRewardPrefab, freeRewardsParent);
+                    freeNode.GetComponent<RectTransform>().anchoredPosition = new Vector2(cardX, 0f);
+                    freeNode.Setup(freeReward, config.playerLevel, config.premiumOwned, OnRewardClaimed);
+                }
+            }
         }
 
         // Width: span to the last premium reward in the last level.
@@ -205,6 +233,14 @@ public class BattlePassController : MonoBehaviour
         }
 
         RefreshTopUI();
+    }
+
+
+    public void OnGetPremiumClicked()
+    {
+        if (config == null) return;
+        config.premiumOwned = true;
+        Build();
     }
 
     private void ClearParent(RectTransform parent)

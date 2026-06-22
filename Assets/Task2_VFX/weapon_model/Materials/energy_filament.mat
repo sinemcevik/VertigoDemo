@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9086121264142847985
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Editor::UnityEditor.Rendering.Universal.AssetVersion
+  version: 10
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: energy_filament
+  m_Shader: {fileID: 4800000, guid: 2bbf7a5d8697645918d8ab68f32089a0, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses:
+  - MOTIONVECTORS
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _AuraPower: 2.4
+    - _AuraStrength: 0.9
+    - _CenterDim: 0.55
+    - _EdgePower: 1.8
+    - _FlowSpeed: 0.45
+    - _HexScale: 18
+    - _HexSpeed: 0.6
+    - _HexStrength: 0.22
+    - _Intensity: 2.5
+    - _Opacity: 0.65
+    - _PulseFreq: 3.5
+    - _PulseSharpness: 3
+    - _PulseStrength: 0.85
+    - _PulseTravel: 2.2
+    - _Seed: 0
+    - _StarDensity: 12
+    - _StarSpeed: 4
+    - _StarStrength: 1.4
+    - _StrandFreq: 5
+    - _TipFade: 0.12
+    - _VeinSharpness: 4.5
+    - _VeinStrength: 1.1
+    - _WidthFade: 0.22
+    - _WorldScale: 1.6
+    m_Colors:
+    - _AuraColor: {r: 1, g: 0.78, b: 0.21999997, a: 1}
+    - _EdgeHotColor: {r: 1, g: 0.92, b: 0.54999995, a: 1}
+    - _FilamentColor: {r: 1, g: 0.62, b: 0.07999996, a: 1}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
