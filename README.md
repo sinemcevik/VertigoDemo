@@ -40,3 +40,6 @@ VFX shaders are in `Assets/Task2_VFX/weapon_model/Materials/` I have left some o
 4. Press Play
 
 That's it.
+
+Critical Strike - A8F2C81C11668B18
+Polygun Arena - 5F028598239EC8F
