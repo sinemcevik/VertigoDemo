@@ -15,7 +15,7 @@ All scenes live under `Assets/Scenes/`.
 
 To open one: Project window → `Assets/Scenes/` → double-click the scene. Or File → Open Scene.
 
-Screen recordings (where I have them) are in `Assets/Scenes/Recordings/`. `VertigoVFX.mov` is in the repo. `VertigoUI.mov` is kept locally only — the file is ~136 MB and GitHub won't take it.
+Screen recordings (where I have them) are in `Assets/Scenes/Recordings/`. `VertigoVFX.mov` is in the repo. `VertigoUI.mov` is kept locally only — the file is ~136 MB and GitHub won't take it. https://drive.google.com/drive/folders/1HgquG_plINiEOSde2M5sjhOHOqUkeIIe?usp=share_link
 
 ---
 
