@@ -10,7 +10,7 @@ All scenes live under `Assets/Scenes/`.
 
 | Scene | Path | What it is |
 |-------|------|------------|
-| **VertigoUI** | `Assets/Scenes/VertigoUI.unity` | Battle pass screen. Scrollable reward road, progress bar, free/paid tracks. This is the default scene in build settings. |
+| **VertigoUI** | `Assets/Scenes/VertigoUI.unity` | Battle pass screen. Scrollable reward road, progress bar, free/paid tracks. This is the default scene in build settings. As shown in video when get is pressed premium unlocks card fx is visible when cards clicked they are added as coin, gem etc. to balance. |
 | **VertigoVFX** | `Assets/Scenes/VertigoVFX.unity` | Weapon showcase. MCX Top Scorer with custom shaders — wisps, energy filaments, wind, distortion. |
 
 To open one: Project window → `Assets/Scenes/` → double-click the scene. Or File → Open Scene.
