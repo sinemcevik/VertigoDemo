@@ -31,15 +31,6 @@ VFX shaders are in `Assets/Task2_VFX/weapon_model/Materials/`.
 
 ---
 
-## Notes
-
-Built on Unity URP. Open in a recent Unity 6 editor if you can — project was last worked on in 2025/2026.
-
-If something looks pink or missing after clone: let Unity reimport (first open takes a minute). `Library/` and `Temp/` are gitignored on purpose — Unity regenerates those.
-
-Reference images and a demo video for the battle pass are in `Assets/Task1_UI/references/`. VFX references are in `Assets/Task2_VFX/references/`.
-
----
 
 ## Running it
 
