@@ -27,7 +27,7 @@ Screen recordings (where I have them) are in `Assets/Scenes/Recordings/`. `Verti
 
 Main scripts for the UI are in `Assets/Task1_UI/scripts/` — `BattlePassController`, `BattlePassRoadUI`, `RewardNodeUI`, `TiledBackgroundScroller`. Config lives in `New Battle Pass Config.asset`.
 
-VFX shaders are in `Assets/Task2_VFX/weapon_model/Materials/`.
+VFX shaders are in `Assets/Task2_VFX/weapon_model/Materials/` I have left some other shaders I made in the process.
 
 ---
 
